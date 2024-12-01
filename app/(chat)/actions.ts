@@ -4,6 +4,7 @@ import { type CoreUserMessage, generateText } from "ai";
 import { cookies } from "next/headers";
 
 import { customModel } from "@/lib/ai";
+import { getUser, getUserApiUsage, updateUserApiUsage } from "@/lib/db/queries";
 
 export async function saveModelId(model: string) {
   const cookieStore = await cookies();
@@ -31,4 +32,28 @@ export async function generateTitleFromUserMessage({
     return "Untitled";
   }
   return content.toString().slice(0, 80);
+}
+
+export async function judgeUserApiUsage(email: string) {
+  const [user] = await getUser(email);
+  // 是否是会员->会员是否到期->是否有剩余调用次数
+  if (
+    user.membershipStatus >= 1 &&
+    user.membershipEndDate &&
+    new Date(user.membershipEndDate) >= new Date()
+  ) {
+    const [usage] = await getUserApiUsage(user.id);
+    const flag = usage.apiCallsLeft > 0;
+    return flag;
+  }
+  return false;
+}
+
+export async function minusApiUsage(userId: string) {
+  const [usage] = await getUserApiUsage(userId);
+  await updateUserApiUsage({
+    userId: userId,
+    apiCallsLeft: usage.apiCallsLeft - 1,
+    monthlyLimit: usage.monthlyLimit,
+  });
 }
