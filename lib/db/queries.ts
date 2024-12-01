@@ -132,7 +132,7 @@ export async function getUserApiUsage(
   userId: string
 ): Promise<Array<UserApiUsage>> {
   try {
-    return await db.select().from(userApiUsage).where(eq(user.id, userId));
+    return await db.select().from(userApiUsage).where(eq(userApiUsage.userId, userId));
   } catch (error) {
     console.error("Failed to get userApiUsage from database");
     throw error;

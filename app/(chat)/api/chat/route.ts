@@ -347,7 +347,7 @@ export async function POST(request: Request) {
               (message) => {
                 const messageId = generateUUID();
 
-                if (message.role === 'assistant') {
+                if (message.role === "assistant") {
                   streamingData.appendMessageAnnotation({
                     messageIdFromServer: messageId,
                   });
@@ -360,11 +360,11 @@ export async function POST(request: Request) {
                   content: message.content,
                   createdAt: new Date(),
                 };
-              },
+              }
             ),
           });
         } catch (error) {
-          console.error('Failed to save chat');
+          console.error("Failed to save chat");
         }
       }
 
@@ -372,10 +372,9 @@ export async function POST(request: Request) {
     },
     experimental_telemetry: {
       isEnabled: true,
-      functionId: 'stream-text',
+      functionId: "stream-text",
     },
   });
-
 
   await minusApiUsage(session.user.id);
 
