@@ -266,7 +266,7 @@ export function MultimodalInput({
 
       <Textarea
         ref={textareaRef}
-        placeholder="您可以输入您的灵感、目标人群、场景限制等，我可以帮您构思短视频主题、设计钩子骨架、或者制作短视频脚本"
+        placeholder="输入您的灵感、目标人群、场景限制等，我可以帮您构思短视频idea、设计钩子骨架以及者制作短视频脚本"
         value={input}
         onChange={handleInput}
         className={cx(

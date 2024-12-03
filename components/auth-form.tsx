@@ -1,12 +1,12 @@
-import Form from 'next/form';
+import Form from "next/form";
 
-import { Input } from './ui/input';
-import { Label } from './ui/label';
+import { Input } from "./ui/input";
+import { Label } from "./ui/label";
 
 export function AuthForm({
   action,
   children,
-  defaultEmail = '',
+  defaultEmail = "",
 }: {
   action: NonNullable<
     string | ((formData: FormData) => void | Promise<void>) | undefined
@@ -21,7 +21,7 @@ export function AuthForm({
           htmlFor="email"
           className="text-zinc-600 font-normal dark:text-zinc-400"
         >
-          Email Address
+          邮箱
         </Label>
 
         <Input
@@ -42,12 +42,13 @@ export function AuthForm({
           htmlFor="password"
           className="text-zinc-600 font-normal dark:text-zinc-400"
         >
-          Password
+          密码
         </Label>
 
         <Input
           id="password"
           name="password"
+          placeholder="密码至少6位"
           className="bg-muted text-md md:text-sm"
           type="password"
           required
