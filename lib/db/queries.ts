@@ -57,7 +57,7 @@ export async function createUser(email: string, password: string) {
       .returning({ id: user.id });
     return await db
       .insert(userApiUsage)
-      .values({ userId: newUser.id, apiCallsLeft: 3, monthlyLimit: 3 });
+      .values({ userId: newUser.id, apiCallsLeft: 10, monthlyLimit: 10 });
   } catch (error) {
     console.error("Failed to create user in database");
     throw error;
