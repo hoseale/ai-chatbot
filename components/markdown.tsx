@@ -73,6 +73,13 @@ const NonMemoizedMarkdown = ({ children }: { children: string }) => {
         </table>
       );
     },
+    th: ({ node, children, ...props }) => {
+      return (
+        <th className="border border-gray-300 p-2" {...props}>
+          {children}
+        </th>
+      );
+    },
     td: ({ node, children, ...props }) => {
       return (
         <td className="border border-gray-300 p-2" {...props}>
