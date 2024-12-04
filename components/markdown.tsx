@@ -66,6 +66,20 @@ const NonMemoizedMarkdown = ({ children }: { children: string }) => {
         </Link>
       );
     },
+    table: ({ node, children, ...props }) => {
+      return (
+        <table className="border-collapse" {...props}>
+          {children}
+        </table>
+      );
+    },
+    td: ({ node, children, ...props }) => {
+      return (
+        <td className="border border-gray-300 p-2" {...props}>
+          {children}
+        </td>
+      );
+    },
     h1: ({ node, children, ...props }) => {
       return (
         <h1 className="text-3xl font-semibold mt-6 mb-2" {...props}>
