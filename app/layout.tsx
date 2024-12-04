@@ -6,7 +6,7 @@ import { ThemeProvider } from "@/components/theme-provider";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://chat.vercel.ai"),
+  // metadataBase: new URL("https://chat.vercel.ai"),
   title: "短视频AI，短视频脚本制作",
   description: "短视频构思、钩子制作、骨架制作、脚本制作",
 };
